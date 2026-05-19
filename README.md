@@ -1,53 +1,51 @@
-# Quick Note Plasma Widget
+# Quick Note
 
-A small KDE Plasma 6 panel widget for file-based Markdown notes.
+A small KDE Plasma 6 widget for file-based Markdown notes.
 
-## Build
+Notes are stored as normal Markdown files in a folder you choose:
 
-This project targets KDE Plasma 6 and uses a QML UI with a small C++/Qt backend.
-
-On Arch/CachyOS, install:
-
-```sh
-sudo pacman -S \
-  base-devel \
-  cmake \
-  extra-cmake-modules \
-  qt6-base \
-  qt6-declarative \
-  qt6-tools \
-  plasma-sdk \
-  libplasma \
-  kcoreaddons \
-  kconfig \
-  ki18n \
-  kio \
-  kpackage \
-  ksvg \
-  ninja
+```text
+current.md
+archive/
 ```
-## Requirements
 
+## Install
 
-Run from the project root:
+Install the Plasma 6, Qt 6, and KDE Frameworks 6 development packages for your distribution, plus CMake and a C++ compiler.
+
+Then run:
 
 ```sh
-cmake -S . -B build -DCMAKE_INSTALL_PREFIX="$HOME/.local"
+git clone <repo-url>
+cd kde-notes
+./install.sh
+```
+
+Restart Plasma Shell or log out and back in, then add **Quick Note** to your panel from the widget picker.
+
+## Manual Install
+
+```sh
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$HOME/.local"
 cmake --build build
 ctest --test-dir build --output-on-failure
 cmake --install build
 ```
 
-After installing, add Quick Note to a Plasma panel.
-
-If Plasma does not see it immediately, restart Plasma:
+## Update
 
 ```sh
-systemctl --user restart plasma-plasmashell.service
+git pull
+./install.sh
 ```
 
-Or log out and back in.
+## Uninstall
+
+```sh
+kpackagetool6 --type Plasma/Applet --remove org.sintori.quicknote
+rm -rf ~/.local/share/plasma/plasmoids/org.sintori.quicknote
+```
 
 ## Shortcut
 
-Quick Note exposes a Plasma action named `Toggle Quick Note` that opens or closes the existing panel popup. If your Plasma widget/global shortcut UI shows actions for this widget, assign a shortcut there. The action toggles the normal popup only; it does not open a separate window.
+Quick Note exposes **Toggle Quick Note** for Plasma shortcut configuration if available. The shortcut toggles the existing panel popup; it does not open a separate window.
