@@ -16,8 +16,8 @@ Install the Plasma 6, Qt 6, and KDE Frameworks 6 development packages for your d
 Then run:
 
 ```sh
-git clone <repo-url>
-cd kde-notes
+git clone https://github.com/Sintorisan/QuickNote.git
+cd QuickNote
 ./install.sh
 ```
 
