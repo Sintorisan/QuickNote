@@ -1,0 +1,22 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "",
+                "Name": "Sintori"
+            }
+        ],
+        "Category": "Utilities",
+        "Description": "A small file-based quick note widget",
+        "EnabledByDefault": true,
+        "Icon": "accessories-text-editor",
+        "Id": "org.sintori.quicknote",
+        "License": "GPL-3.0-or-later",
+        "Name": "Quick Note",
+        "Version": "0.1.0"
+    },
+    "X-Plasma-API": "declarativeappletscript",
+    "X-Plasma-API-Minimum-Version": "6.0",
+    "X-Plasma-MainScript": "ui/main.qml"
+}
