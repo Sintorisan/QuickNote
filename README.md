@@ -18,6 +18,7 @@ Then run:
 ```sh
 git clone https://github.com/Sintorisan/QuickNote.git
 cd QuickNote
+chmod +x install.sh
 ./install.sh
 ```
 
@@ -32,20 +33,9 @@ ctest --test-dir build --output-on-failure
 cmake --install build
 ```
 
-## Update
-
-```sh
-git pull
-./install.sh
-```
-
 ## Uninstall
 
 ```sh
 kpackagetool6 --type Plasma/Applet --remove org.sintori.quicknote
 rm -rf ~/.local/share/plasma/plasmoids/org.sintori.quicknote
 ```
-
-## Shortcut
-
-Quick Note exposes **Toggle Quick Note** for Plasma shortcut configuration if available. The shortcut toggles the existing panel popup; it does not open a separate window.
