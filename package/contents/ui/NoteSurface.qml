@@ -161,25 +161,33 @@ Item {
                 opacity: 0.9
             }
 
-            QQC2.TextArea {
-                id: editor
-
+            QQC2.ScrollView {
+                id: editorScrollView
                 anchors.fill: parent
                 visible: root.controller.storageReady
-                text: root.controller.editorText
-                placeholderText: i18n("Quick note")
-                wrapMode: TextEdit.Wrap
-                selectByMouse: true
-                leftPadding: Kirigami.Units.smallSpacing * 1.5
-                rightPadding: Kirigami.Units.smallSpacing * 1.5
-                topPadding: Kirigami.Units.smallSpacing * 1.5
-                bottomPadding: Kirigami.Units.smallSpacing * 1.5
-                background: Rectangle {
-                    color: "transparent"
-                    radius: root.radius
+                clip: true
+                QQC2.ScrollBar.vertical.policy: QQC2.ScrollBar.AsNeeded
+                QQC2.ScrollBar.horizontal.policy: QQC2.ScrollBar.AlwaysOff
+
+                QQC2.TextArea {
+                    id: editor
+
+                    width: editorScrollView.availableWidth
+                    text: root.controller.editorText
+                    placeholderText: i18n("Quick note")
+                    wrapMode: TextEdit.Wrap
+                    selectByMouse: true
+                    leftPadding: Kirigami.Units.smallSpacing * 1.5
+                    rightPadding: Kirigami.Units.smallSpacing * 1.5
+                    topPadding: Kirigami.Units.smallSpacing * 1.5
+                    bottomPadding: Kirigami.Units.smallSpacing * 1.5
+                    background: Rectangle {
+                        color: "transparent"
+                        radius: root.radius
+                    }
+                    onTextChanged: root.controller.editorChanged(text)
+                    Component.onCompleted: forceActiveFocus()
                 }
-                onTextChanged: root.controller.editorChanged(text)
-                Component.onCompleted: forceActiveFocus()
             }
 
             ColumnLayout {
